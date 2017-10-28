@@ -18,6 +18,15 @@
       }
       obj.say(); // obj
 
+      var obj1 = {
+          say: function () {
+            setTimeout(function() {
+              console.log(this)
+            });
+          }
+        }
+
+      obj1.say(); // window
 
     </script>
   </body>
