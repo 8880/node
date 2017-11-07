@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>学生管理系统</title>
+    <style media="screen">
+
+      .f1 {
+        margin-left: 130px;
+        position: relative;
+        height: 9px;
+      }
+
+      .sture .f1 input{
+        width: 60px;
+        height: 30px;
+        margin: 0;
+        margin-top: -14px;
+      }
+
+      .k1 {
+        position: absolute;
+        z-index: 999;
+      }
+
+      .k2 {
+        position: absolute;
+        top: -14px;
+        border-radius: 2px;
+        border: 1px red solid;
+        width: 120px;
+      }
+
+      .kk1 {
+        width: 60px;
+        height: 30px;
+        color: rgb(231, 30, 60);
+        background-color: red;
+      }
+
+      .kk2 {
+        width: 60px;
+        height: 30px;
+        top: -1px;
+        right: 0px;
+        position: absolute;
+        color: rgb(231, 30, 60);
+        /*background-color: blue;*/
+      }
+
+    </style>
+  <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="bg">
+  <div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li id="showf5" role="presentation" class="active"> <a href="#home" aria-controls="home" role="tab" data-toggle="tab">学生信息</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">添加</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">修改</a></li>
+      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">删除</a></li>
+      <li role="presentation"><a href="#set" aria-controls="set" role="tab" data-toggle="tab">查找</a></li>
+      <li style="float: right; cursor: pointer" id="logout" ><a>注销</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+
+    <!-- 显示学生 -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home" style="height: 915px;">
+
+        <div class="box" >
+          <table class="allstu" border="1px" cellspacing='0'>
+            <caption class="cap" style="text-align: center">
+              <h1>学 生 信 息</h1>
+            </caption>
+            <thead>
+              <tr>
+                <th>学 生 姓 名</th>
+                <th>性 别</th>
+                <th>年 龄</th>
+                <th>成 绩</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <!-- 添加学生 -->
+      <div role="tabpanel" class="tab-pane" id="profile" style="height: 815px;">
+          <div class="sture" style="margin-top: 100px; height: 500px;" >
+            <div class="head"><span>请输入想要添加的学生信息</span><br></div>
+            <span>学生姓名:</span><input id="stuname" type="text" name="" value=""><br>
+            <span>学生性别:</span><input id="stusex" type="text" name="" value=""><br>
+            <!-- <span>学生性别:</span><div class="f1"><div class="k1"><input class="" type="radio" id="it1" name="gender" value="0" checked>
+                  <input class="" type="radio" name="gender" id="it2" value="1"></div><div class="k2"><div class="kk1"></div><div class="kk2"></div></div></div> -->
+            <span>学生年龄:</span><input id="stuage" type="text" name="" value=""><br>
+            <span>学生成绩:</span><input id="stuscore" type="text" name="" value=""><br>
+            <button id="add" class="ttn" type="button" name="button">提交</button>
+          </div>
+      </div>
+      <!-- 修改学生信息 -->
+      <div role="tabpanel" class="tab-pane" id="messages" style="height: 915px;">
+        <div class="sture">
+          <div class="head"><span>请输入想要修改的学生信息(信息可选填!!!!)</span><br></div>
+          <span>学生姓名:</span><input id="fdxstuname" type="text" name="" value=""><br>
+          <span>学生性别:</span><input id="fdxstusex" type="text" name="" value=""><br>
+          <span>学生年龄:</span><input id="fdxstuage" type="text" name="" value=""><br>
+          <span>学生成绩:</span><input id="fdxstuscore" type="text" name="" value=""><br>
+          <button id="fdx" class="ttn" type="button" name="button">查 询</button><br>
+          <table border="1px" cellspacing='0'>
+            <caption style="text-align: center">
+              <h2>学生信息</h2>
+            </caption>
+            <thead class="sx">
+              <tr>
+                <th>学生姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>成绩</th>
+              </tr>
+            </thead>
+            <tbody class="fdxstu"></tbody>
+          </table>
+          <div class="head" style="margin-top:20px" ><span>请修改(信息可选填!!!!)</span><br></div>
+          <span>学生姓名:</span><input id="restuname" type="text" name="" value=""><br>
+          <span>学生性别:</span><input id="restusex" type="text" name="" value=""><br>
+          <span>学生年龄:</span><input id="restuage" type="text" name="" value=""><br>
+          <span>学生成绩:</span><input id="restuscore" type="text" name="" value=""><br>
+          <button id="re" class="ttn" type="button" name="button">修 改</button>
+        </div>
+
+      </div>
+      <!-- 删除学生信息 -->
+      <div role="tabpanel" class="tab-pane" id="settings" style="height: 815px;">
+          <div class="sture" style="margin-top: 100px; height: 500px;">
+            <div class="head"><span>请输入想要删除的学生信息(信息可选填!!!!)</span><br></div>
+            <span>学生姓名:</span><input id="dlstuname" type="text" name="" value=""><br>
+            <span>学生性别:</span><input id="dlstusex" type="text" name="" value=""><br>
+            <span>学生年龄:</span><input id="dlstuage" type="text" name="" value=""><br>
+            <span>学生成绩:</span><input id="dlstuscore" type="text" name="" value=""><br>
+            <button id="dl" class="ttn" type="button" name="button">删除</button>
+          </div>
+      </div>
+      <!-- 查找学生 -->
+      <div role="tabpanel" class="tab-pane" id="set" style="height: 915px;">
+          <div class="sture" style="overflow: auto;">
+            <div class="head"><span>请输入想要查找的学生信息(信息可选填!!!!)</span><br></div>
+            <span>学生姓名:</span><input id="fdstuname" type="text" name="" value=""><br>
+            <span>学生性别:</span><input id="fdstusex" type="text" name="" value=""><br>
+            <span>学生年龄:</span><input id="fdstuage" type="text" name="" value=""><br>
+            <span>学生成绩:</span><input id="fdstuscore" type="text" name="" value=""><br>
+            <button id="fd" class="ttn" type="button" name="button">查 找</button>
+
+            <table border="1px" cellspacing='0'>
+              <caption style="text-align: center">
+                <h2>学生信息</h2>
+              </caption>
+              <thead class="sx">
+                <tr>
+                  <th>学生姓名</th>
+                  <th>性别</th>
+                  <th>年龄</th>
+                  <th>成绩</th>
+                </tr>
+              </thead>
+              <tbody class="fdstu"></tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="/js/jquery.min.js" charset="utf-8"></script>
+  <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- <script src='/js/sex.js'> -->
+
+  </script>
+
+  <script type="text/javascript">
+    $('#myTabs a[href="#profile"]').tab('show')
+    $('#myTabs a:first').tab('show')
+    $('#myTabs a:last').tab('show')
+    $('#myTabs li:eq(2) a').tab('show')
+
+    $(function() {
+      //每次点击刷新信息
+      $("#showf5").click(function() {
+        history.go(0)
+      })
+      //显示学生信息
+      $.ajax({
+        url: '/show',
+        method: 'post',
+      }).done(function(data, status, jqXHR) {
+
+        data.forEach(function(cur, index) {
+          $('.allstu').append(`<tr><td>${cur.stuname}</td><td>${cur.stusex}</td><td>${cur.stuage}</td><td>${cur.stuscore}</td></tr>`)
+        })
+
+      }).fail(function(jqXHR, status, error) {
+        console.log(error);
+      })
+
+      //添加学生信息
+      $('#add').click(function() {
+        var stuname = $('#stuname').val();
+        var stusex = $('#stusex').val();
+        var stuage = $('#stuage').val();
+        var stuscore = $('#stuscore').val();
+
+        $.ajax({
+          url: '/add',
+          method: 'post',
+          data: {
+            stuname: stuname,
+            stusex: stusex,
+            stuage: stuage,
+            stuscore: stuscore
+          }
+        }).done(function(data, status, jqXHR) {
+          alert("添加成功!!!");
+          $('#stuname').val('');
+          $('#stusex').val('');
+          $('#stuage').val('');
+          $('#stuscore').val('');
+        }).fail(function(jqXHR, status, error) {
+          alert('添加失败')
+        });
+      })
+
+
+      //删除学生
+
+      $('#dl').click(function() {
+        var dlstuname = $('#dlstuname').val();
+        var dlstusex = $('#dlstusex').val();
+        var dlstuage = $('#dlstuage').val();
+        var dlstuscore = $('#dlstuscore').val();
+
+        $.ajax({
+          url: '/stu',
+          method: 'delete',
+          data: {
+            dlstuname: dlstuname,
+            dlstusex: dlstusex,
+            dlstuage: dlstuage,
+            dlstuscore: dlstuscore
+          }
+        }).done(function(data, status, jqXHR) {
+          if (data.status == 1) {
+            alert("删除成功!!!");
+            $('#dlstuname').val('');
+            $('#dlstusex').val('');
+            $('#dlstuage').val('');
+            $('#dlstuscore').val('');
+          } else {
+            alert('删除失败')
+          }
+
+        }).fail(function(jqXHR, status, error) {
+          alert('删除失败')
+        })
+      });
+
+
+      //查找学生
+
+      $('#fd').click(function() {
+        var fdstuname = $('#fdstuname').val();
+        var fdstusex = $('#fdstusex').val();
+        var fdstuage = $('#fdstuage').val();
+        var fdstuscore = $('#fdstuscore').val();
+
+        $.ajax({
+          url: '/fd',
+          method: 'post',
+          data: {
+            fdstuname: fdstuname,
+            fdstusex: fdstusex,
+            fdstuage: fdstuage,
+            fdstuscore: fdstuscore
+          }
+        }).done(function(data, status, jqXHR) {
+
+          data.forEach(function(cur, index) {
+            $('.fdstu').append(`<tr><td>${cur.stuname}</td><td>${cur.stusex}</td><td>${cur.stuage}</td><td>${cur.stuscore}</td></tr>`)
+          })
+          $('#fdstuname').val('');
+          $('#fdstusex').val('');
+          $('#fdstuage').val('');
+          $('#fdstuscore').val('');
+
+
+        }).fail(function(jqXHR, status, error) {
+          alert('查询不存在')
+        });
+      });
+
+
+      //修改信息
+      $('#fdx').click(function() {
+        var fdxstuname = $('#fdxstuname').val();
+        var fdxstusex = $('#fdxstusex').val();
+        var fdxstuage = $('#fdxstuage').val();
+        var fdxstuscore = $('#fdxstuscore').val();
+
+        $.ajax({
+          url: '/stu',
+          method: 'put',
+          data: {
+            fdxstuname: fdxstuname,
+            fdxstusex: fdxstusex,
+            fdxstuage: fdxstuage,
+            fdxstuscore: fdxstuscore
+          }
+        }).done(function(datas, status, jqXHR) {
+
+          datas.forEach(function(cur, index) {
+            $('.fdxstu').append(`<tr><td>${cur.stuname}</td><td>${cur.stusex}</td><td>${cur.stuage}</td><td>${cur.stuscore}</td></tr>`)
+          })
+          $('#fdxstuname').val('');
+          $('#fdxstusex').val('');
+          $('#fdxstuage').val('');
+          $('#fdxstuscore').val('');
+          var restuname = $('#restuname').val(datas[0].stuname);
+          var restusex = $('#restusex').val(datas[0].stusex);
+          var restuage = $('#restuage').val(datas[0].stuage);
+          var restuscore = $('#restuscore').val(datas[0].stuscore);
+          //修改
+          $('#re').click(function() {
+            var restuname = $('#restuname').val();
+            var restusex = $('#restusex').val();
+            var restuage = $('#restuage').val();
+            var restuscore = $('#restuscore').val();
+
+            $.ajax({
+              url: '/re',
+              method: 'post',
+              data: {
+                findnm: datas[0].stuname,
+                restuname: restuname,
+                restusex: restusex,
+                restuage: restuage,
+                restuscore: restuscore
+              }
+            }).done(function(data, status, jqXHR) {
+              alert('修改成功');
+              $('#restuname').val('');
+              $('#restusex').val('');
+              $('#restuage').val('');
+              $('#restuscore').val('');
+
+
+            }).fail(function(jqXHR, status, error) {
+              alert('查询不存在')
+            });
+          });
+
+
+        }).fail(function(jqXHR, status, error) {
+          alert('查询不存在')
+        });
+      });
+
+
+      //注销
+      $('#logout').click(function() {
+
+        $.ajax({
+          url: '/logout',
+          method: 'get',
+        }).done(function(data, status, jqXHR) {
+          alert(data);
+          history.go(0)
+        }).fail(function(jqXHR, status, error) {
+          alert('添加失败')
+        });
+      })
+
+    });
+  </script>
+</body>
+
+</html>

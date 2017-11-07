@@ -19,6 +19,7 @@ var server = http.createServer(function(req, res){
     console.log("req.httpVersion = ", req.httpVersion);
     console.log("req.url = ", req.url);//请求路径
 
+
     if (req.url === '/'){
       res.writeHead(200, {'Content-Type': 'text/plain'});
       res.write(headers);

@@ -1,0 +1,164 @@
+body {
+  background: url('/images/bg.png');
+  overflow: hidden;
+}
+
+* {
+  user-select: none;
+
+}
+
+.content {
+  width: 610px;
+  margin: 0 auto;
+}
+
+.lgbox {
+  width: 500px;
+  height: 600px;
+  /*border: 1px solid #fff;*/
+}
+
+.logo {
+  text-align: center;
+  padding: 40px;
+  color: #fff;
+  text-shadow: -1px -1px 8px #fff, 1px 1px 16px #000;
+  font-size: 40px;
+}
+
+.sign {
+  width: 104px;
+  height: 35px;
+  background-color: rgb(101, 167, 81);
+  border: 1px solid;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+span {
+  font-size: 20px;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.01);
+  color: #fff;
+  outline: none;
+  border: none;
+  width: 200px;
+  height: 35px;
+  border-bottom: 2px solid rgb(152, 152, 161);
+  font-size: 25px;
+  padding-left: 20px;
+}
+
+button {
+  margin-top: -20px;
+  width: 200px;
+  height: 45px;
+  background-color: orange;
+  border: 1px solid;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#msg {
+  width: 266px;
+  position: fixed;
+  z-index: 999;
+  top: 49%;
+  margin-top: -220px;
+  left: 48%;
+  margin-left: -133px;
+  background: #fff;
+  box-shadow: 5px 5px 8px #999;
+  font-size: 17px;
+  color: #666;
+  border: 1px solid #f8f8f8;
+  text-align: center;
+  line-height: 2rem;
+  display: inline-block;
+  padding-bottom: 20px;
+  border-radius: 2px;
+}
+
+#msg_top {
+  background: #f8f8f8;
+  padding: 5px 15px 5px 20px;
+  text-align: left;
+}
+
+#msg_top span {
+  font-size: 22px;
+  float: right;
+  cursor: pointer;
+}
+
+#msg_cont {
+  padding: 15px 20px 20px;
+  text-align: left;
+  user-select: none;
+}
+
+#msg_clear {
+  display: inline-block;
+  color: #fff;
+  padding: 1px 15px;
+  background: #8fc31f;
+  border-radius: 2px;
+  float: right;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.msg_close {
+  user-select: none;
+}
+
+.sgin {
+  position: relative;
+  padding: 20px;
+  width: 400px;
+  height: 400px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  background-color: rgb(107, 194, 195);
+  color: rgb(16, 136, 164);
+  border-radius: 6px;
+  top: -354px;
+  left: -8px;
+  display: none;
+}
+
+.sgin input {
+  margin: 10px;
+  margin-left: 30px;
+  color: rgb(103, 52, 107);
+}
+
+.sgin button {
+  margin-top: 32px;
+  margin-left: 75px;
+  background-color: rgb(213, 78, 78);
+}
+
+.sgin h1 {
+  text-align: center;
+  text-shadow: -1px -1px 8px #fff, 1px 1px 16px #fff;
+  color: green;
+}
+
+.dis {
+  position: absolute;
+  color: #666;
+  font-size: 46px;
+  top: 0px;
+  right: 12px;
+  width: 33px;
+  font-weight: 700;
+  cursor: pointer;
+}

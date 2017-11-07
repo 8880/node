@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>登录</title>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+
+  <div class="content">
+
+    <!-- 登录 -->
+    <div class="lgbox">
+      <div class="logo">
+        <h1>登  &nbsp;&nbsp;&nbsp;&nbsp;录</h1>
+      </div>
+
+      <div style="margin-left: 60px">
+        <span>用户名: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="username" type="text"><br><br><br><br><br>
+        <span>密 &nbsp;&nbsp;&nbsp;码: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="pwd" type="password"><br><br><br><br><br><br><br><br>
+      </div>
+      <div style="height:2px"><button class="sign" id="signin">新用户注册</button></div>
+      <div style="margin-left: 160px"><button id="btn"><b>登 &nbsp;&nbsp;&nbsp;录</b></button></div>
+    </div>
+
+
+    <!-- 注册 -->
+    <div class="sgin">
+
+      <div class="newuser">
+        <h1>新 用 户 注 册</h1>
+        <div class="dis" id="dis">×</div>
+        <span>新用户名:</span><input type="text" id="sguser" value="">
+      </div>
+      <div class="paswd">
+        <span>密 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</span><input type="password" id="sgpaswd" value="">
+      </div>
+      <div class="paswd2">
+        <span>确认密码:</span><input type="password" id="sgpaswd2" value="">
+      </div>
+      <div class="sub">
+        <button id="newsg">注 &nbsp;&nbsp;&nbsp;&nbsp;册</button>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <script src="/js/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(function() {
+
+
+      //提示信息
+      function alert(e) {
+        clearTimeout(timer);
+        $("body").append('<div id="msg"><div id="msg_top">提示<span class="msg_close">×</span></div><div id="msg_cont">' + e + '</div><div class="msg_close" id="msg_clear">确定</div></div>');
+        $(".msg_close").click(function() {
+          $("#msg").remove();
+        });
+
+        var timer = setTimeout(function() {
+          $(".msg_close").click();
+        }, 1000);
+
+        document.onkeydown = function() {
+          if (event.keyCode == 13) {
+            $("#msg").remove();
+          }
+        }
+      }
+
+      $('#username, #pwd').on('keydown', function() {
+        if (event.keyCode == 13) {
+          $('#btn').click();
+          $('#username, #pwd').blur();
+        }
+      });
+
+
+      //登录
+      $('#btn').click(function() {
+        var username = $('#username').val()
+        var pwd = $('#pwd').val()
+
+        $.ajax({
+          url: '/login',
+          method: 'post',
+          data: {
+            username: username,
+            pwd: pwd
+          }
+        }).done(function(data, status, jqXHR) {
+
+          if (data.status == 1) {
+            window.location = "/stu";
+
+          } else if (data.status == 2) {
+            alert('用户名不存在')
+          } else if (data.status == 3) {
+            alert('密码错误')
+          } else {
+            alert('账号或密码错误')
+            $('#username').val("");
+            $('#pwd').val("");
+          }
+        }).fail(function(jqXHR, status, error) {
+          console.log(error);
+        });
+      });
+
+
+      //注册
+      $('#signin').click(function() {
+        $('.sgin').show();
+      })
+
+      $('#dis').click(function() {
+        $('.sgin').hide();
+      })
+
+
+      $('#newsg').click(function() {
+        var sguser = $('#sguser').val();
+        var sgpaswd = $('#sgpaswd').val();
+        var sgpaswd2 = $('#sgpaswd2').val();
+
+
+        if (sguser == '' || sgpaswd == '') {
+          alert('用户名或密码不能为空!!')
+        } else if (sgpaswd != sgpaswd2) {
+          alert("密码不一致,请重新输入");
+          sgpaswd = $('#sgpaswd').val("");
+          sgpaswd2 = $('#sgpaswd2').val("");
+        }else {
+
+          $.ajax({
+            url: '/signin',
+            method: 'post',
+            data: {
+              sguser: sguser,
+              sgpaswd: sgpaswd
+            }
+          }).done(function(data, status, jqXHR) {
+            if (data.status == 1) {
+              alert('注册成功!!!')
+              $('#sguser').val("");
+              $('#sgpaswd').val("");
+              $('#sgpaswd2').val("");
+              
+              $('.sgin').hide();
+            } else {
+              alert('用户名已存在, 请重新注册!!!')
+              $('#sguser').val("");
+              $('#sgpaswd').val("");
+              $('#sgpaswd2').val("");
+            }
+
+          }).fail(function(jqXHR, status, error) {
+            console.log(error);
+          });
+
+        }
+      })
+
+
+
+    });
+  </script>
+</body>
+
+</html>
