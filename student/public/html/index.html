@@ -15,12 +15,13 @@
     <!-- 登录 -->
     <div class="lgbox">
       <div class="logo">
+        <h3>L &nbsp;O &nbsp;G &nbsp;I &nbsp;N</h3>
         <h1>登  &nbsp;&nbsp;&nbsp;&nbsp;录</h1>
       </div>
 
       <div style="margin-left: 60px">
-        <span>用户名: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="username" type="text"><br><br><br><br><br>
-        <span>密 &nbsp;&nbsp;&nbsp;码: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="pwd" type="password"><br><br><br><br><br><br><br><br>
+        <span>用户名 : </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="username" type="text" placeholder="username"><br><br><br><br><br>
+        <span>密 &nbsp;&nbsp;&nbsp;码 : </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="pwd" type="password" placeholder="password"><br><br><br><br><br><br><br><br>
       </div>
       <div style="height:2px"><button class="sign" id="signin">新用户注册</button></div>
       <div style="margin-left: 160px"><button id="btn"><b>登 &nbsp;&nbsp;&nbsp;录</b></button></div>
@@ -33,13 +34,13 @@
       <div class="newuser">
         <h1>新 用 户 注 册</h1>
         <div class="dis" id="dis">×</div>
-        <span>新用户名:</span><input type="text" id="sguser" value="">
+        <span>新用户名:</span><input type="text" id="sguser" value="" placeholder="用户名" >
       </div>
       <div class="paswd">
-        <span>密 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</span><input type="password" id="sgpaswd" value="">
+        <span>密 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</span><input type="password" id="sgpaswd" value="" placeholder="密码">
       </div>
       <div class="paswd2">
-        <span>确认密码:</span><input type="password" id="sgpaswd2" value="">
+        <span>确认密码:</span><input type="password" id="sgpaswd2" value="" placeholder="确认密码">
       </div>
       <div class="sub">
         <button id="newsg">注 &nbsp;&nbsp;&nbsp;&nbsp;册</button>
@@ -121,6 +122,9 @@
 
       $('#dis').click(function() {
         $('.sgin').hide();
+        $('#sguser').val("");
+        $('#sgpaswd').val("");
+        $('#sgpaswd2').val("");
       })
 
 
@@ -129,6 +133,11 @@
         var sgpaswd = $('#sgpaswd').val();
         var sgpaswd2 = $('#sgpaswd2').val();
 
+        sguser = sguser.replace(/</g, '&lt;');
+        sguser = sguser.replace(/>/g, '&gt;');
+        sguser = sguser.replace(/&/g, '&amp;');
+        sguser = sguser.replace(/'/g, '&#39;');
+        sguser = sguser.replace(/"/g, '&quot;');      
 
         if (sguser == '' || sgpaswd == '') {
           alert('用户名或密码不能为空!!')
@@ -151,7 +160,7 @@
               $('#sguser').val("");
               $('#sgpaswd').val("");
               $('#sgpaswd2').val("");
-              
+
               $('.sgin').hide();
             } else {
               alert('用户名已存在, 请重新注册!!!')

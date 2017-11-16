@@ -49,6 +49,10 @@
         /*background-color: blue;*/
       }
 
+      li {
+        cursor: pointer;
+      }
+
     </style>
   <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
@@ -60,12 +64,12 @@
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li id="showf5" role="presentation" class="active"> <a href="#home" aria-controls="home" role="tab" data-toggle="tab">学生信息</a></li>
-      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">添加</a></li>
-      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">修改</a></li>
-      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">删除</a></li>
-      <li role="presentation"><a href="#set" aria-controls="set" role="tab" data-toggle="tab">查找</a></li>
-      <li style="float: right; cursor: pointer" id="logout" ><a>注销</a></li>
+      <li id="showf5" role="presentation" class="active"> <a aria-controls="home" role="tab" data-toggle="tab">学生信息</a></li>
+      <li role="presentation"><a aria-controls="profile" role="tab" data-toggle="tab">添 加</a></li>
+      <li role="presentation"><a aria-controls="messages" role="tab" data-toggle="tab">修 改</a></li>
+      <li role="presentation"><a aria-controls="settings" role="tab" data-toggle="tab">删 除</a></li>
+      <li role="presentation"><a aria-controls="set" role="tab" data-toggle="tab">查 找</a></li>
+      <li style="float: right; cursor: pointer" id="logout" ><a style="background-color: red; color: #fff;font-size:19px; padding: 8px; border-radius:2px">注 销</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -202,7 +206,7 @@
         url: '/show',
         method: 'post',
       }).done(function(data, status, jqXHR) {
-
+        console.log(data);
         data.forEach(function(cur, index) {
           $('.allstu').append(`<tr><td>${cur.stuname}</td><td>${cur.stusex}</td><td>${cur.stuage}</td><td>${cur.stuscore}</td></tr>`)
         })

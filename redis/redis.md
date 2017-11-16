@@ -4,6 +4,8 @@
 
 开启服务端 cd redis/src ./redis-server
 开启客户端 cd redis/src ./redis-cli
+src/redis-server  ./redis.conf 带密码
+
 
 windows: redis.windows.conf
 linux:  redis.conf   
